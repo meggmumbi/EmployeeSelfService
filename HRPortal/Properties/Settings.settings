@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="HRPortal.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="HRPortal_NavExtender_NavXtender" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://10.0.2.179:7047/BC140/WS/TEST/Codeunit/NavXtender</Value>
+    </Setting>
+    <Setting Name="HRPortal_HRPortal_HRPortal" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://10.0.2.179:7047/BC140/WS/KEMRI/Codeunit/HRPortal</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

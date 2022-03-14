@@ -1,0 +1,920 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="HRPortal.Site" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>KEMRI-U-TAP</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker.css">
+    <!-- bootstrap datepicker -->
+    <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <!-- Bootstrap Color Picker -->
+    <link rel="stylesheet" href="bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css">
+    <!-- Bootstrap time Picker -->
+    <link rel="stylesheet" href="plugins/timepicker/bootstrap-timepicker.min.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css">
+    <!-- Morris chart -->
+    <link rel="stylesheet" href="bower_components/morris.js/morris.css">
+    <!-- jvectormap -->
+    <link rel="stylesheet" href="bower_components/jvectormap/jquery-jvectormap.css">
+    <!-- Date Picker -->
+    <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker.css">
+    <!-- bootstrap wysihtml5 - text editor -->
+    <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker.css">
+    <!-- bootstrap datepicker -->
+    <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+
+    <!-- Bootstrap time Picker -->
+    <link rel="stylesheet" href="plugins/timepicker/bootstrap-timepicker.min.css">
+    <!-- Select2 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/materialize-stepper@3.1.0/dist/css/mstepper.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="CustomCss/CustomCss.css">
+    
+    
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <form runat="server">
+        <div class="wrapper">
+            <header class="main-header">
+                <a href="Dashboard.aspx" class="logo">
+                    <%
+                         var image = "Passport/" + Convert.ToString(Session["employeeNo"]) + ".png";
+                        
+                         %>
+                    <img src="images/logo.png" style="height: 60px; width: 200px; padding-left: 2px" />
+                </a>
+                <nav class="navbar navbar-static-top">
+                    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                        <span class="sr-only">Toggle navigation</span>
+                    </a>
+
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown user user-menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <img src="<%=image %>" class="user-image" alt="User Image">
+                                    <span class="hidden-xs"><% =Session["name"] %></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="user-header">
+                                        <img src="<%=image %>" class="img-circle" alt="User Image">
+                                       
+                                        <p>
+                                            <% =Session["name"] %>
+                                            <small>Kenya Medial Research Institute(KEMRI)</small>
+                                        </p>
+                                    </li>
+                                    <li class="user-footer">
+                                        <div class="pull-left">
+                                            <a href="ResetPassword.aspx" class="btn btn-default btn-flat">Change Password</a>
+                                        </div>
+                                        <div class="pull-right">
+                                            <a href="Login.aspx" class="btn btn-default btn-flat">Sign out</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <aside class="main-sidebar">
+                <section class="sidebar">
+                    <div class="user-panel" style="background-color: #007cba">
+                        <p class="pull-left"><b style="color: #dd4b39;padding-left:3rem !important">In Search of Better Health</b></p><br />
+                        <div class="pull-left image">
+                            <img src="<%=image %>" class="img-circle" alt="User Image">
+                        </div>
+                        <div class="pull-left info">
+                            
+                            <p><%=Session["name"] %></p>
+                            <a href="#"><i class="fa fa-circle text-success"></i>Online</a>
+                        </div>
+                    </div>
+                    <ul class="sidebar-menu" data-widget="tree">
+                        
+                        <li class="active">
+                            <a href="Dashboard.aspx">
+                                <i class="fa fa-dashboard"></i><span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-th"></i>
+                                <span>Payrol Services</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="payslip.aspx"><i class="fa fa-file"></i>Payslip</a></li>
+                                <li><a href="p9.aspx"><i class="fa fa-file"></i>P9</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-th"></i>
+                                <span>Human Resource Services</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="treeview">
+                                    <a href="#">
+                                        <i class="fa fa-list"></i>
+                                        <span>Leave Management</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="leaveapplication.aspx">New Leave Application</a></li>
+                                        <li><a href="OpenLeaveApplications.aspx">Leave Applications</a></li>
+                                        <li><a href="ApprovedLeaveApplication.aspx">Approved Applications</a></li>
+                                        <li><a href="PostedLeaveApplications.aspx">Posted Applications</a></li>
+                                        <li><a href="leavebalances.aspx">Leave Balances</a></li>
+
+
+                                    </ul>
+                                </li>
+                                <li class="treeview">
+                                    <a href="#">
+                                        <i class="fa fa-list"></i>
+                                        <span>Training Management</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li class="active">
+                                            <a href="TrainingPlan.aspx">
+                                                <i class="fa fa-list"></i><span>Training Plan</span>
+                                            </a>
+                                        </li>
+                                        <li class="treeview">
+                                            <a href="#">
+                                                <i class="fa fa-list"></i>
+                                                <span>Training Needs Request</span>
+                                                <span class="pull-right-container">
+                                                    <i class="fa fa-angle-left pull-right"></i>
+                                                </span>
+                                            </a>
+                                            <ul class="treeview-menu">
+                                                <li><a href="TrainingNeedsRequest.aspx">New Request</a></li>
+                                                <li><a href="OpenTrainingNeedsRequests.aspx">Open Request</a></li>
+                                                <li><a href="ApprovedTrainingNeedsRequests.aspx">Approved Request</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="treeview">
+                                            <a href="#">
+                                                <i class="fa fa-list"></i>
+                                                <span>Training Applications</span>
+                                                <span class="pull-right-container">
+                                                    <i class="fa fa-angle-left pull-right"></i>
+                                                </span>
+                                            </a>
+                                            <ul class="treeview-menu">
+                                                <li><a href="TrainingApplication.aspx">New Application</a></li>
+                                                <li><a href="OpenTrainingApplications.aspx">Open Applications</a></li>
+                                                <li><a href="ApprovedTrainingApplications.aspx">Approved Applications</a></li>
+
+                                            </ul>
+                                        </li>
+                                        <li class="treeview">
+                                            <a href="#">
+                                                <i class="fa fa-list"></i>
+                                                <span>Training Feedback</span>
+                                                <span class="pull-right-container">
+                                                    <i class="fa fa-angle-left pull-right"></i>
+                                                </span>
+                                            </a>
+                                            <ul class="treeview-menu">
+                                                <li><a href="TrainingFeedback.aspx">New Feedback</a></li>
+                                                <li><a href="OpenTrainingFeedback.aspx">Open Feedback</a></li>
+                                                <li><a href="SubmittedTrainingFeedback.aspx">Submitted Feedback</a></li>
+                                                <li><a href="ProcessedTrainingFeedback.aspx">Processed Feedback</a></li>
+
+                                            </ul>
+                                        </li>   
+                                        <li class="treeview">
+                                            <a href="#">
+                                                <i class="fa fa-list"></i>
+                                                <span>Training Evaluation</span>
+                                                <span class="pull-right-container">
+                                                    <i class="fa fa-angle-left pull-right"></i>
+                                                </span>
+                                            </a>
+                                            <ul class="treeview-menu">
+                                                <li><a href="TrainingEvaluation.aspx">New Evaluation</a></li>
+                                                <li><a href="OpenEvaluation.aspx">Open Evaluation</a></li>
+                                                <li><a href="SubmittedTrainingEvaluation.aspx">Submitted Evaluation</a></li>
+
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="InternalAdverts.aspx"><i class="fa fa-user"></i>Internal Adverts</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-th"></i>
+                                <span>Financial Services</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="treeview">
+                                    <a href="#">
+                                        <i class="fa fa-list"></i>
+                                        <span>Imprest Memo</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="Imprest.aspx">New Imprest Memo</a></li>
+                                        <li><a href="ImprestMemo.aspx?status=open">Open Imprest Memos</a></li>
+                                        <li><a href="ImprestMemo.aspx?status=approved">Approved Imprest Memos</a></li>
+                                        <li><a href="ImprestRequisition.aspx?status=approved">Approved Imprest Requisitions</a></li>
+                                         <li><a href="BankedImprestRequsition.aspx">Banked Imprest Requisitions</a></li>
+                                        <li><a href="PostedImprestRequisition.aspx">Posted Imprest Requisitions</a></li>
+
+                                    </ul>
+                                </li>
+                                <li class="treeview">
+                                    <a href="#">
+                                        <i class="fa fa-list"></i>
+                                        <span>Imprest Surrender</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="ImprestSurrender.aspx">New Imprest Surrender</a></li>
+                                        <li><a href="ImprestSurrenders.aspx?status=open">Open Imprest Surrender</a></li>
+                                        <li><a href="ImprestSurrenders.aspx?status=approved">Approved Imprest Surrender</a></li>
+                                        <li><a href="PostedImprestSurrenders.aspx">Posted Imprest Surrender</a></li>
+
+                                    </ul>
+                                </li>
+                                <li class="treeview">
+                                    <a href="#">
+                                        <i class="fa fa-list"></i>
+                                        <span>Staff Claim</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="StaffClaim.aspx">New Staff Claim</a></li>
+                                        <li><a href="StaffClaims.aspx?status=open">Open Staff Claims</a></li>
+                                        <li><a href="StaffClaims.aspx?status=approved">Approved Staff Claims</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-th"></i>
+                                <span>Supply Chain Services</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="treeview">
+                                    <a href="#">
+                                        <i class="fa fa-list"></i>
+                                        <span>Purchase Requisition</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="PurchaseRequisition.aspx">New Purchase Requisition</a></li>
+                                        <li><a href="PurchaseRequisitions.aspx?status=open">Open Purchase Requsition</a></li>
+                                        <li><a href="PurchaseRequisitions.aspx?status=approved">Approved Purchase Requisition</a></li>
+                                    </ul>
+                                </li>
+                                <li class="treeview">
+                                    <a href="#">
+                                        <i class="fa fa-list"></i>
+                                        <span>Store Requisition</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="StoreRequisition.aspx">New Store Requisition</a></li>
+                                        <li><a href="StoreRequisitions.aspx?status=open">Open Store Requsition</a></li>
+                                        <li><a href="StoreRequisitions.aspx?status=approved">Approved Store Requisition</a></li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-th"></i>
+                                <span>E-Records</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="NewRecordsRequisition.aspx">New Records Requisition</a></li>
+                                <li><a href="OpenRecordRequisitions.aspx">Records Requisitions</a></li>
+                                <li><a href="ApprovedRecordRequsitions.aspx">Approved Records Requisition</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-th"></i>
+                                <span>Fleet Management</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="treeview">
+                                    <a href="#">
+                                        <i class="fa fa-th"></i>
+                                        <span>Fleet Requisitions</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="FleetRequisition.aspx">New Fleet Requisition</a></li>
+                                        <li><a href="FleetRequisitions.aspx?status=open">Open Fleet Requsition</a></li>
+                                        <li><a href="FleetRequisitions.aspx?status=approved">Approved Fleet Requisition</a></li>
+                                    </ul>
+                                </li>
+                                <li class="treeview">
+                                    <a href="#">
+                                        <i class="fa fa-th"></i>
+                                        <span>Trips</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="OpenTransportRequisitionTrips.aspx">My Open Trips</a></li>
+                                        <li><a href="ClosedTransportRequisitionTrips.aspx">My ClosedTrips</a></li>
+                                    </ul>
+                                </li>
+                                <li class="treeview">
+                                    <a href="#">
+                                        <i class="fa fa-th"></i>
+                                        <span>Vehicle Maintenance</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="VehicleServiceRequisition.aspx">Vehicle Maintenance Request</a></li>
+                                        <li><a href="OpenVehicleServiceRequisition.aspx">Open Vehicle Maintenance Request</a></li>
+                                        <li><a href="ApprovedVechicleServiceRequsitions.aspx">Approved Vehicle Maintenance</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="treeview">
+                                    <a href="#">
+                                        <i class="fa fa-th"></i>
+                                        <span>Daily Work Ticket</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="NewDailyWorkTicket.aspx">New Daily Work Ticket</a></li>
+                                        <li><a href="OpenDailyWorkTicketRequest.aspx">Open Daily Work Ticket</a></li>
+                                        <li><a href="ApprovedDailyWorkTicket.aspx">Approved Daily Work Ticket</a></li>
+                                    </ul>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-th"></i>
+                                <span>Performance Management</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="treeview">
+                                    <a href="#">
+                                        <i class="fa fa-list"></i>
+                                        <span>Corporate Strategic Plan</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="OngoingStrategicPlan.aspx">Current Corporate Strategic Plan </a></li>
+                                        <li><a href="AnnualWorkPlan.aspx">Approved Annual Work Plan</a></li>
+                                        <li><a href="BoardPerformanceContract.aspx">Board Performance Contract</a></li>
+                                    </ul>
+                                </li>
+                                <li class="treeview">
+                                    <a href="#">
+                                        <i class="fa fa-list"></i>
+                                        <span>Staff Performance Contract</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="NewIndividualScoreCard.aspx">New Performance Contract</a></li>
+                                        <li><a href="OpenScoreCard.aspx">Open Performance Contract</a></li>
+                                        <li><a href="PendingPerfomanceScoreCard.aspx">Pending Approval Performance Contract</a></li>
+                                        <li><a href="ApprovedScoreCard.aspx">Approved Performance Contract</a></li>
+                                    </ul>
+                                </li>
+                                <li class="treeview">
+                                    <a href="#">
+                                        <i class="fa fa-list"></i>
+                                        <span>Performance Diary Logs</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="PerformanceLog.aspx">New Performance Diary</a></li>
+                                        <li><a href="OpenPerformanceLogs.aspx">Open Performance Diary</a></li>                       
+                                        <li><a href="ApprovedPerformanceLogs.aspx">Approved Performance Diary</a></li>
+                                    </ul>
+                                </li>
+                                <li class="treeview">
+                                    <a href="#">
+                                        <i class="fa fa-list"></i>
+                                        <span>Employee Attestations</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="OpenEmployeeAttestations.aspx">Open Employee Attestations</a></li>
+                                        <li><a href="AkcnowledgedEmployeeAttestations.aspx">Acknowledged Attestations</a></li>
+                                    </ul>
+                                </li>
+                                <li class="treeview">
+                                    <a href="#">
+                                        <i class="fa fa-list"></i>
+                                        <span>Standard Appraisal</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="NewStandardAppraisal.aspx">New Standard Appraisal</a></li>
+                                        <li><a href="OpenStandardAppraisal.aspx">Open Standard Appraisal</a></li>
+                                        <%
+                                            if (Convert.ToBoolean(Session["appraisalSupervisor"]) == true)
+                                            {
+                                                %>
+                                             <li><a href="StandardAppraisalUnderEvaluation.aspx">Supervisor Appraisal Under Evaluation</a></li>
+                                        <%
+                                            }
+                                        %>
+                                   
+                                        <li><a href="StandardAppraisalUnderEvaluationPending.aspx">Individual Appraisal Under Evaluation</a></li>                                      
+                                        <li><a href="SubmittedStandardAppraisal.aspx">Submitted Standard Appraisal</a></li>
+                                    </ul>
+                                </li>
+                                <li class="treeview">
+                                    <a href="#">
+                                        <i class="fa fa-list"></i>
+                                        <span>Business Research</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="EmployeeSurveyResponses.aspx">Open Survey Responses </a></li>
+                                        <li><a href="SubmittedSurvey.aspx">Submitted Survey Responses </a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-th"></i>
+                                <span>Risk & Compliance Management</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="RiskDashboard.aspx"><i class="fa fa-home"></i><span>Risk Dashboard</span> </a></li>
+                                <li class="treeview">
+                                    <a href="#">
+                                        <i class="fa fa-list"></i>
+                                        <span>Risk Governance</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="RiskManagementFramework.aspx">Risk Management Framework</a></li>
+                                    </ul>
+                                </li>
+                                <li class="treeview">
+                                    <a href="#">
+                                        <i class="fa fa-list"></i>
+                                        <span>Risk And Compliance</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li class="treeview">
+                                            <a href="#">
+                                                <i class="fa fa-list"></i>
+                                                <span>Risk Management Plans</span>
+                                                <span class="pull-right-container">
+                                                    <i class="fa fa-angle-left pull-right"></i>
+                                                </span>
+                                            </a>
+                                            <ul class="treeview-menu">
+                                                <li><a href="StrategicRiskManagementPlans.aspx">Strategic Risk Plans</a></li>
+                                                <li><a href="DirectorateRiskManagementPlans.aspx">Directorate Risk Plans</a></li>
+                                                <li><a href="DepartmentalRiskManagementPlans.aspx">Departmental Risk Plans</a></li>
+                                                <li><a href="RegionalRiskManagementPlans.aspx">Regional Risk Plans</a></li>
+                                                <li><a href="ProjectRiskManagementPlans.aspx">Project Risk Plans</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="treeview">
+                                            <a href="#">
+                                                <i class="fa fa-list"></i>
+                                                <span>Risk Incident Logs</span>
+                                                <span class="pull-right-container">
+                                                    <i class="fa fa-angle-left pull-right"></i>
+                                                </span>
+                                            </a>
+                                            <ul class="treeview-menu">
+                                                <li><a href="NewRiskIncidentLogs.aspx">New Risk Incident Log</a></li>
+                                                <li><a href="OpenRiskIncidentLogs.aspx">Open Risk Incident Logs</a></li>
+                                                <li><a href="ApprovedRiskIncidentLogs.aspx">Approved Risk Incident Logs</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-th"></i>
+                                <span>ICT Services</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="treeview">
+                                    <a href="#">
+                                        <i class="fa fa-th"></i>
+                                        <span>ICT Help Desk</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="ICTHelpDesk.aspx">New Request</a></li>
+                                        <li><a href="MyHelpDeskRequests.aspx">My Pending Requests</a></li>
+                                        <li><a href="ResolvedHelpDeskIssues.aspx">My Resolved Requests</a></li>
+                                    </ul>
+                                </li>
+                                <%
+                                    if (Convert.ToBoolean(Session["admin"].ToString()) == true)
+                                    {
+                                %>
+                                <li class="treeview">
+                                    <a href="#">
+                                        <i class="fa fa-th"></i><span>Admin HelpDesk Request</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="OpenHelpDeskItems.aspx">Open Requests</a></li>
+                                        <li><a href="AssignedHelpDeskList.aspx">Assigned Help desk Requests</a></li>
+                                        <li><a href="MyEscalatedHelpdeskRequest.aspx">Escalated Help desk Requests</a></li>
+                                        <li><a href="AllresolvedHelpDeskISSUES.aspx">Resolved Help desk Requests</a></li>
+                                        <li><a href="ClosedICTRequests.aspx">Closed Help desk Requests</a></li>
+                                         <li><a href="ICTALLISSUES.aspx">All help desk Issues report </a></li>
+                                        <li><a href="issuesReopenedReport.aspx">Reopened and Resolved Issues report</a></li>
+                                    </ul>
+                                </li>
+                                  <%} %>
+                            </ul>
+                        </li>
+                          <li><a href="http://10.0.2.179/PowerBIReports/browse/"><i class="fa fa-bar-chart"></i>Reports & Analysis(Power BI)</a></li>
+                        <li><a href="ResetPassword.aspx"><i class="fa fa-cogs"></i>Change Password</a></li>
+                         <li><a href="Login.aspx"><i class="fa fa-share"></i>Logout</a></li>
+                    </ul>
+                </section>
+            </aside>
+            <div class="content-wrapper">
+                <section class="content">
+                    <asp:ContentPlaceHolder ID="MainBody" runat="server">
+
+                    </asp:ContentPlaceHolder>
+                </section>
+            </div>
+            <footer class="main-footer">
+                <div class="pull-right hidden-xs">
+                    <b>Kenya Medical Research Institute</b>
+                </div>
+                <strong>Copyright&copy; <%: DateTime.Now.Year %>  <a href="https://dynasoft.co.ke">Powered By Dynasoft Business Solutions</a>.</strong> All rights
+                Reserved.
+            </footer>
+        </div>
+    </form>
+    <script type="text/javascript">
+        $('#MainBody_txtDOB').datepicker({
+            autoclose: true, format: 'dd/mm/yyyy', startDate: '0d'
+        });
+        $('.datepicker').datepicker({
+            format: 'mm/dd/yyyy',
+            startDate: '-3d'
+        });
+        $('#MainBody_datePicker').datepicker({
+            autoclose: true, format: 'dd/mm/yyyy'
+        });
+    </script>
+    <!-- jQuery 3 -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- date-range-picker -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="bower_components/moment/min/moment.min.js"></script>
+    <script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap datepicker -->
+    <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <!-- bootstrap color picker -->
+    <script src="bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+    <!-- bootstrap time picker -->
+    <script src="plugins/timepicker/bootstrap-timepicker.min.js"></script>
+
+    <!-- jQuery UI 1.11.4 -->
+    <script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button);
+    </script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Morris.js charts -->
+    <script src="bower_components/raphael/raphael.min.js"></script>
+    <script src="bower_components/morris.js/morris.min.js"></script>
+    <!-- Sparkline -->
+    <script src="bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+    <!-- jvectormap -->
+    <script src="plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="bower_components/jquery-knob/dist/jquery.knob.min.js"></script>
+    <!-- daterangepicker -->
+    <script src="bower_components/moment/min/moment.min.js"></script>
+    <script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- datepicker -->
+    <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <!-- Bootstrap WYSIHTML5 -->
+    <script src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+    <!-- Slimscroll -->
+    <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="bower_components/fastclick/lib/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="dist/js/adminlte.min.js"></script>
+    <script src="dist/js/pages/dashboard.js"></script>
+    <script src="dist/js/demo.js"></script>
+    <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script src="CustomJs/CustomJs.js?v=2"></script>
+    <script src="CustomJs/CategoriesSelection.js?v=2"></script>
+    <script src="CustomJs/CustomCsP.js?v=2"></script>
+    <script src="CustomJs/ActiveSelectedCsp.js?v=2"></script>
+    <script src="CustomJs/annualdetails.js?v=2"></script>
+    <script src="CustomJs/additionalInitiatives.js?v=2"></script>
+    <script src="CustomJs/Training.js?v=2"></script>
+    <script src="CustomJs/StandardAppraisal.js?v=2"></script>
+   <%-- <script src="CustomJs/PerformanceDataScript.js?v=2"></script>--%>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.select2').select2();
+            $(".amountText").each(function (ev) {
+                $(this).attr("placeholder", "Please Search");
+
+            });
+
+            $('#MainBody_EffectiveDate').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+            $('#MainBody_Dateofcurrentappointment').datepicker({
+                autoclose: true, format: 'd/mm/yyyy'
+            });
+            $('#MainBody_firstofDateappointment').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+            $('#MainBody_registrationDate').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+
+            $('#MainBody_returndate').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+            $('#MainBody_DOB').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+            $('#MainBody_qualificationTo').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+            $('#MainBody_qualificationFrom').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+            $('#MainBody_prof_startDate').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+            $('#MainBody_prof_endDate').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+            $('#MainBody_tr_StartDate').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+            $('#MainBody_tr_EndDate').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+            $('#MainBody_m_DateofRenewal').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+            $('#MainBody_em_StartDate').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+            $('#MainBody_em_EndDate').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+            $('#MainBody_Dateoffirstappointment').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy', startDate: '0d'
+            });
+            $('#MainBody_lastpromotion').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy', startDate: '0d'
+            });
+            $('#MainBody_Dateofcurrentappointment1').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+            $('#MainBody_firstofDateappointment1').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+            $('#MainBody_registrationDate1').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+            $('#MainBody_DOB1').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+            $('#MainBody_qualificationTo1').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+            $('#MainBody_qualificationFrom1').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+            $('#MainBody_prof_startDate1').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+            $('#MainBody_prof_endDate1').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+            $('#MainBody_tr_StartDate1').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+            $('#MainBody_tr_EndDate1').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+            $('#MainBody_m_DateofRenewal1').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+            $('#MainBody_em_StartDate1').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+            $('#MainBody_em_EndDate1').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+            $('#MainBody_Dateoffirstappointment1').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy', startDate: '0d'
+            });
+
+            $('#MainBody_lastpromotion1').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy', startDate: '0d'
+            });
+
+            $('#MainBody_travelDate').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy', startDate: '0d'
+            });
+            $('#MainBody_tripdate').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy', startDate: '0d'
+            });
+            $('#MainBody_accidentdate').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy', startDate: '0d'
+            });
+            $('#MainBody_dateofTrip').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy', startDate: '0d'
+            });
+            $('#MainBody_leaveStartDate').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+            $('#MainBody_dateOfExam').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+
+            $('#MainBody_healthAssessmentDate').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+            $('#MainBody_dateOfBirth').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+            $('#MainBody_qualificationFrom').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+            $('#MainBody_qualificationTo').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+            $('#MainBody_healthAssessmentDate').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+            $('#MainBody_initativestartDate').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+            $('#MainBody_initativeendDate').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+            $('#MainBody_dateOfBirth').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+            $('#MainBody_qualificationFrom').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+            $('#MainBody_qualificationTo').datepicker({
+                autoclose: true, format: 'dd/mm/yyyy'
+            });
+        });
+    </script>
+    <script>
+        $(function () {
+            $('#example1').DataTable()
+            $('#example2').DataTable()
+            $('#example4').DataTable()
+            $('#example5').DataTable()
+            $('#example6').DataTable()
+            $('#example3').DataTable({
+                'paging': true,
+                'lengthChange': true,
+                'searching': true,
+                'ordering': true,
+                'info': true,
+                'autoWidth': true
+            })
+        })
+    </script>
+</body>
+</html>
+
